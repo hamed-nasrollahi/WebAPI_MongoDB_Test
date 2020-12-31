@@ -44,5 +44,31 @@ namespace WebAPI_MongoDB_Test.Controllers
 
             return _mongo.LoadAllRecords<WeatherData>("data");
         }
+
+        // GET api/WeatherData/5553a998e4b02cf7151190b8
+        [HttpGet("{id}")]
+        public WeatherData Get(string id)
+        {
+            //get the record by objectID
+            return _mongo.LoadRecordByID<WeatherData>("data",ObjectId.Parse(id));
+        }
+
+        // POST api/WeatherData
+        [HttpPost]
+        public void Post([FromBody] string value)
+        {
+        }
+
+        // PUT api/WeatherData/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] string value)
+        {
+        }
+
+        // DELETE api/WeatherData/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+        }
     }
 }
